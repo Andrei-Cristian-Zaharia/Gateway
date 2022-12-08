@@ -16,7 +16,10 @@ public class RouterValidator {
             "/recipe/name",
             "/recipe/id",
             "/recipe/all",
-            "/utils/measurements"
+            "/utils/measurements",
+            "/auth/test",
+            "/auth/login",
+            "/person/create"
     );
 
     public Predicate<ServerHttpRequest> isSecured =

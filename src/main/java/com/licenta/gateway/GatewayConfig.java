@@ -17,9 +17,12 @@ public class GatewayConfig {
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route("auth-service", r -> r.path("/v1/core-api/auth/**")
+                .route("core-service-auth", r -> r.path("/v1/core-api/auth/**")
                         .filters(f -> f.filter(filter))
                         .uri("http://localhost:3001/v1/core-api/auth"))
+                .route("core-service-person", r -> r.path("/v1/core-api/person/**")
+                        .filters(f -> f.filter(filter))
+                        .uri("http://localhost:3001/v1/core-api/person"))
                 .route("food-service-ingredient", r -> r.path("/v1/food-api/ingredient/**")
                         .filters(f -> f.filter(filter))
                         .uri("http://localhost:3000/v1/food-api/ingredient"))
