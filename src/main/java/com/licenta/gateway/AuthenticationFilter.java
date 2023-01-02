@@ -43,6 +43,7 @@ public class AuthenticationFilter implements GatewayFilter {
                     .header("authorities", String.valueOf("[GUEST]"))
                     .build();
         }
+
         return chain.filter(exchange);
     }
 
@@ -64,6 +65,7 @@ public class AuthenticationFilter implements GatewayFilter {
         Claims claims = jwtUtil.getAllClaimsFromToken(token);
         exchange.getRequest().mutate()
                 .header("authorities", String.valueOf(claims.get("authorities")))
+                .header("email", String.valueOf(claims.get("email")))
                 .build();
     }
 }

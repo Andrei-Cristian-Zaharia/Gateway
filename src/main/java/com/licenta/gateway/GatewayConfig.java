@@ -4,6 +4,7 @@ import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Configuration
 public class GatewayConfig {
@@ -32,6 +33,15 @@ public class GatewayConfig {
                 .route("food-service-recipe", r -> r.path("/v1/food-api/utils/measurements")
                         .filters(f -> f.filter(filter))
                         .uri("http://localhost:3000/v1/food-api/utils/measurements"))
+                .route("restaurant-service-restaurant", r -> r.path("/v1/restaurant-api/restaurant/**")
+                        .filters(f -> f.filter(filter))
+                        .uri("http://localhost:3002/v1/restaurant-api/restaurant"))
+                .route("restaurant-service-menuItem", r -> r.path("/v1/restaurant-api/menuItem/**")
+                        .filters(f -> f.filter(filter))
+                        .uri("http://localhost:3002/v1/restaurant-api/menuItem"))
+                .route("restaurant-service-menu", r -> r.path("/v1/restaurant-api/menu/**")
+                        .filters(f -> f.filter(filter))
+                        .uri("http://localhost:3002/v1/restaurant-api/menu"))
                 .build();
     }
 }
