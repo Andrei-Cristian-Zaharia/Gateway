@@ -1,17 +1,23 @@
-server.:
-    port: 3005
+server:
+  port: 3005
 
 jwt:
-    secret: BvPHGM8C0ia4uOuxxqPD5DTbWC9F9TWvPStp3pb7ARo0oK2mJ3pd3YG4lxA9i8bj6OTbadwezxgeEByY
+  secret: BvPHGM8C0ia4uOuxxqPD5DTbWC9F9TWvPStp3pb7ARo0oK2mJ3pd3YG4lxA9i8bj6OTbadwezxgeEByY
+  test: "WTF?"
 
 spring:
-    cloud:
-        gateway:
-            globalcors:
-                corsConfigurations:
-                    '[/**]':
-                        allowedOrigins: "http://localhost:4200"
-                        allowedHeaders: "*"
-                        allowedMethods:
-                         - GET
-                         - POST
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+
+wtf:
+  test: "FMM"
+#  context:
+#    - "/v1/core-api"
+#    - "/v1/food-api"
+#    - "/v1/restaurant-api"

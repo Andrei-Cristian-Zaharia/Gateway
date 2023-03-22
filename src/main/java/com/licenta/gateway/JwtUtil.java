@@ -10,9 +10,6 @@ import org.springframework.stereotype.Component;
 import java.security.Key;
 import java.util.Date;
 
-import static java.text.NumberFormat.Field.PREFIX;
-import static javax.accessibility.AccessibleRole.HEADER;
-
 @Component
 public class JwtUtil {
 
@@ -38,6 +35,5 @@ public class JwtUtil {
     public boolean isInvalid(String token) {
         return false;
     }
-
 }
 

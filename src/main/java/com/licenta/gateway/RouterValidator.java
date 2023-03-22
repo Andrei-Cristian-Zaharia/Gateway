@@ -13,15 +13,15 @@ public class RouterValidator {
             "/ingredient/name",
             "/ingredient/category",
             "/ingredient/all",
-            "/all/byCategory",
-            "/all/byCategory/filter",
-            "/all/name",
+            "/ingredient/all/byCategory",
+            "/ingredient/all/byCategory/filter",
+            "/ingredient/all/name",
             "/recipe/findByName",
             "/recipe/findById",
             "/restaurant/id",
             "/restaurant/owner",
             "/recipe/all",
-            "/all/filtered",
+            "/recipe/all/filtered",
             "/utils/measurements",
             "/auth/test",
             "/auth/login",
@@ -35,10 +35,4 @@ public class RouterValidator {
             "/review/all/user",
             "/recipe/all/owner/username"
     );
-
-    public Predicate<ServerHttpRequest> isSecured =
-            request -> openApiEndpoints
-                    .stream()
-                    .noneMatch(uri -> request.getURI().getPath().contains(uri));
-
 }

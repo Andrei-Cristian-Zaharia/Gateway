@@ -11,15 +11,20 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-@RefreshScope
+import java.util.Arrays;
+import java.util.List;
+
 @Component
+@RefreshScope
 public class AuthenticationFilter implements GatewayFilter {
 
-    private final RouterValidator routerValidator;
     private final JwtUtil jwtUtil;
 
-    public AuthenticationFilter(RouterValidator routerValidator, JwtUtil jwtUtil) {
-        this.routerValidator = routerValidator;
+    private static final List<String> CONTEXT_APPS = Arrays.asList(
+            "/v1/core-api", "/v1/food-api", "/v1/restaurant-api"
+    );
+
+    public AuthenticationFilter(JwtUtil jwtUtil) {
         this.jwtUtil = jwtUtil;
     }
 
@@ -27,7 +32,7 @@ public class AuthenticationFilter implements GatewayFilter {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
 
-        if (testRequestFromGuest(request.getPath().value())) {
+        if (!testRequestFromGuest(request.getPath().value())) {
             if (this.isAuthMissing(request))
                 return this.onError(exchange, "Authorization header is missing in request", HttpStatus.UNAUTHORIZED);
 
@@ -48,7 +53,18 @@ public class AuthenticationFilter implements GatewayFilter {
     }
 
     private Boolean testRequestFromGuest(String url) {
-        return RouterValidator.openApiEndpoints.contains(url);
+        return RouterValidator.openApiEndpoints.contains(formatUrl(url));
+    }
+
+    private String formatUrl(String url) {
+
+        for (String path: CONTEXT_APPS) {
+            if (url.contains(path)) {
+                return url.replace(path, "");
+            }
+        }
+
+        return url;
     }
 
     private Mono<Void> onError(ServerWebExchange exchange, String err, HttpStatus httpStatus) {

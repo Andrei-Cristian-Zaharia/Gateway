@@ -33,7 +33,7 @@ public class GatewayConfig {
                 .route("food-service-recipe", r -> r.path("/v1/food-api/recipe/**")
                         .filters(f -> f.filter(filter))
                         .uri("http://localhost:3000/v1/food-api/recipe"))
-                .route("food-service-recipe", r -> r.path("/v1/food-api/utils/measurements")
+                .route("food-service-utils", r -> r.path("/v1/food-api/utils/measurements")
                         .filters(f -> f.filter(filter))
                         .uri("http://localhost:3000/v1/food-api/utils/measurements"))
                 .route("restaurant-service-restaurant", r -> r.path("/v1/restaurant-api/restaurant/**")
