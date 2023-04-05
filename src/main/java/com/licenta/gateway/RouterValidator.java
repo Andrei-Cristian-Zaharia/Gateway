@@ -33,6 +33,7 @@ public class RouterValidator {
             "/person/details/name",
             "/review/check/entity/existence",
             "/review/all/user",
-            "/recipe/all/owner/username"
+            "/recipe/all/owner/username",
+            "/recipe/favoriteList"
     );
 }
