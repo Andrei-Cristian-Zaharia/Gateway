@@ -34,6 +34,7 @@ public class RouterValidator {
             "/review/check/entity/existence",
             "/review/all/user",
             "/recipe/all/owner/username",
-            "/recipe/favoriteList"
+            "/recipe/favoriteList",
+            "/recipe/favoriteNames"
     );
 }
