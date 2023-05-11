@@ -21,6 +21,7 @@ public class RouterValidator {
             "/restaurant/id",
             "/restaurant/owner",
             "/restaurant/name",
+            "/restaurant/all",
             "/recipe/all",
             "/recipe/all/filtered",
             "/utils/measurements",
