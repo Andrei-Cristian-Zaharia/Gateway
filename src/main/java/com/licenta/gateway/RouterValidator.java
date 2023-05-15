@@ -45,6 +45,8 @@ public class RouterValidator {
             "/recipe/countUserRecipes",
             "/review/averageRecipeRate",
             "/review/averageRateUser",
-            "/menu/getCategorised"
+            "/menu/getCategorised",
+            "/restaurant/favoriteNames",
+            "/restaurant/favoriteListFiltered"
     );
 }

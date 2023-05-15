@@ -48,6 +48,9 @@ public class GatewayConfig {
                 .route("restaurant-service-menu", r -> r.path("/v1/restaurant-api/menu/**")
                         .filters(f -> f.filter(filter))
                         .uri("http://localhost:3002/v1/restaurant-api/menu"))
+                .route("restaurant-service-savedRestaurants", r -> r.path("/v1/restaurant-api/savedRestaurants/**")
+                        .filters(f -> f.filter(filter))
+                        .uri("http://localhost:3002/v1/restaurant-api/savedRestaurants"))
                 .build();
     }
 }
