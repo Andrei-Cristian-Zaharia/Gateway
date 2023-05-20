@@ -29,6 +29,7 @@ public class RouterValidator {
             "/auth/test",
             "/auth/login",
             "/auth/adminCheck",
+            "/auth/getUser",
             "/person/create",
             "/review/create",
             "/review/rating",
